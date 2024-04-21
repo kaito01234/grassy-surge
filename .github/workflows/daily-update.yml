@@ -1,0 +1,32 @@
+name: daily update
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '45 23 * * *'
+
+env:
+  USER_NAME: kaito01234
+  USER_EMAIL: 43839796+kaito01234@users.noreply.github.com
+
+jobs:
+  close-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update file
+        run: |
+          CURRENT_DATETIME=$(date +'%Y-%m-%d %H:%M:%S')
+          echo $CURRENT_DATETIME > updatefile
+        env:
+          TZ: 'Asia/Tokyo'
+
+      - name: Push file
+        run: |
+          git config --global user.name ${USER_NAME}
+          git config --global user.email ${USER_EMAIL}
+          git add .
+          git commit -m "Update file"
+          git push
