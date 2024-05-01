@@ -21,10 +21,9 @@ jobs:
       - name: Random decision
         id: random_decision
         run: |
+          RANDAM_NUMBER=$RANDOM
           echo $RANDAM_NUMBER
           echo "result=$(($RANDAM_NUMBER % 2))" >> $GITHUB_OUTPUT
-        env:
-          RANDAM_NUMBER: $RANDOM
 
       - name: Update file
         if: steps.random_decision.outputs.result == 0
