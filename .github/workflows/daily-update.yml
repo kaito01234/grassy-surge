@@ -23,7 +23,7 @@ jobs:
         run: |
           RANDAM_NUMBER=$RANDOM
           echo $RANDAM_NUMBER
-          echo "result=$(($RANDAM_NUMBER % 2))" >> $GITHUB_OUTPUT
+          echo "result=$(($RANDAM_NUMBER % 10))" >> $GITHUB_OUTPUT
 
       - name: Update file
         if: steps.random_decision.outputs.result == 0
@@ -34,7 +34,7 @@ jobs:
           TZ: 'Asia/Tokyo'
 
       - name: Push file
-        if: steps.random_decision.outputs.RANDAM_NUMBER == 0
+        if: steps.random_decision.outputs.result == 0
         run: |
           git config --global user.name ${USER_NAME}
           git config --global user.email ${USER_EMAIL}
