@@ -3,14 +3,14 @@ name: daily update
 on:
   workflow_dispatch:
   schedule:
-    - cron: '45 23 * * *'
+    - cron: '45 * * * *'
 
 env:
   USER_NAME: kaito01234
   USER_EMAIL: 43839796+kaito01234@users.noreply.github.com
 
 jobs:
-  close-issue:
+  checks-last-update:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -18,7 +18,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Random decision
+        id: random_decision
+        run: echo "RANDAM_NUMBER=$(($RANDOM % 2))" >> $GITHUB_OUTPUT
+
       - name: Update file
+        if: steps.random_decision.outputs.RANDAM_NUMBER == 0
         run: |
           CURRENT_DATETIME=$(date +'%Y-%m-%d %H:%M:%S')
           echo $CURRENT_DATETIME > updatefile
@@ -26,6 +31,7 @@ jobs:
           TZ: 'Asia/Tokyo'
 
       - name: Push file
+        if: steps.random_decision.outputs.RANDAM_NUMBER == 0
         run: |
           git config --global user.name ${USER_NAME}
           git config --global user.email ${USER_EMAIL}
