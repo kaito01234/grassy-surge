@@ -1,1 +1,1 @@
-# checks-last-update
+# あしもとに くさがおいしげった!
