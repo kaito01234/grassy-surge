@@ -23,7 +23,7 @@ jobs:
         run: |
           RANDAM_NUMBER=$RANDOM
           echo $RANDAM_NUMBER
-          echo "result=$(($RANDAM_NUMBER % 10))" >> $GITHUB_OUTPUT
+          echo "result=$(($RANDAM_NUMBER % 20))" >> $GITHUB_OUTPUT
 
       - name: Update file
         if: steps.random_decision.outputs.result == 0
