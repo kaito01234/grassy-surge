@@ -1,4 +1,3 @@
-
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -28,48 +27,82 @@
             color: white;
             border-radius: 5px;
         }
-        .spinner-container {
+        .baran-container {
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 40px 0;
-        }
-        .spinner {
-            width: 450px;
-            height: 450px;
-            border: 24px solid #f0fff0;
-            border-top: 24px solid #22dd22;
-            border-radius: 50%;
-            animation: spin 0.5s linear infinite;
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            height: 400px;
+            width: 100%;
+            overflow: hidden;
         }
-        .spinner-inner {
-            width: 300px;
-            height: 300px;
-            border: 18px solid #fff8e0;
-            border-top: 18px solid #ff8800;
-            border-radius: 50%;
-            animation: spin 0.7s linear infinite;
+        .baran-leaf {
             position: absolute;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 4px;
+            height: 200px;
+            background: linear-gradient(to top, #2d5016, #4a8025, #66b032, #85c947);
+            border-radius: 80% 20% 80% 20%;
+            transform-origin: bottom center;
+            opacity: 0.8;
+            box-shadow: inset 1px 0 2px rgba(0,0,0,0.2);
+            animation: baranSway 1.5s ease-in-out infinite;
         }
-        .spinner-core {
-            width: 150px;
-            height: 150px;
-            border: 12px solid #ffe8e8;
-            border-top: 12px solid #ff2222;
-            border-radius: 50%;
-            animation: spin 0.3s linear infinite;
-            position: absolute;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .baran-leaf:nth-child(1) { left: 50px; height: 150px; animation-delay: 0.01s; }
+        .baran-leaf:nth-child(2) { left: 60px; height: 180px; animation-delay: 0.02s; }
+        .baran-leaf:nth-child(3) { left: 70px; height: 160px; animation-delay: 0.03s; }
+        .baran-leaf:nth-child(4) { left: 80px; height: 200px; animation-delay: 0.04s; }
+        .baran-leaf:nth-child(5) { left: 90px; height: 170px; animation-delay: 0.05s; }
+        .baran-leaf:nth-child(6) { left: 100px; height: 190px; animation-delay: 0.06s; }
+        .baran-leaf:nth-child(7) { left: 110px; height: 220px; animation-delay: 0.07s; }
+        .baran-leaf:nth-child(8) { left: 120px; height: 160px; animation-delay: 0.08s; }
+        .baran-leaf:nth-child(9) { left: 130px; height: 180px; animation-delay: 0.09s; }
+        .baran-leaf:nth-child(10) { left: 140px; height: 200px; animation-delay: 0.1s; }
+        .baran-leaf:nth-child(11) { left: 150px; height: 170px; animation-delay: 0.11s; }
+        .baran-leaf:nth-child(12) { left: 160px; height: 190px; animation-delay: 0.12s; }
+        .baran-leaf:nth-child(13) { left: 170px; height: 210px; animation-delay: 0.13s; }
+        .baran-leaf:nth-child(14) { left: 180px; height: 180px; animation-delay: 0.14s; }
+        .baran-leaf:nth-child(15) { left: 190px; height: 200px; animation-delay: 0.15s; }
+        .baran-leaf:nth-child(16) { left: 200px; height: 160px; animation-delay: 0.16s; }
+        .baran-leaf:nth-child(17) { left: 210px; height: 190px; animation-delay: 0.17s; }
+        .baran-leaf:nth-child(18) { left: 220px; height: 220px; animation-delay: 0.18s; }
+        .baran-leaf:nth-child(19) { left: 230px; height: 170px; animation-delay: 0.19s; }
+        .baran-leaf:nth-child(20) { left: 240px; height: 180px; animation-delay: 0.2s; }
+        .baran-leaf:nth-child(21) { left: 250px; height: 200px; animation-delay: 0.21s; }
+        .baran-leaf:nth-child(22) { left: 260px; height: 190px; animation-delay: 0.22s; }
+        .baran-leaf:nth-child(23) { left: 270px; height: 160px; animation-delay: 0.23s; }
+        .baran-leaf:nth-child(24) { left: 280px; height: 210px; animation-delay: 0.24s; }
+        .baran-leaf:nth-child(25) { left: 290px; height: 180px; animation-delay: 0.25s; }
+        .baran-leaf:nth-child(26) { left: 300px; height: 170px; animation-delay: 0.26s; }
+        .baran-leaf:nth-child(27) { left: 310px; height: 200px; animation-delay: 0.27s; }
+        .baran-leaf:nth-child(28) { left: 320px; height: 190px; animation-delay: 0.28s; }
+        .baran-leaf:nth-child(29) { left: 330px; height: 160px; animation-delay: 0.29s; }
+        .baran-leaf:nth-child(30) { left: 340px; height: 180px; animation-delay: 0.3s; }
+        .baran-leaf:nth-child(31) { left: 350px; height: 220px; animation-delay: 0.31s; }
+        .baran-leaf:nth-child(32) { left: 360px; height: 170px; animation-delay: 0.32s; }
+        .baran-leaf:nth-child(33) { left: 370px; height: 190px; animation-delay: 0.33s; }
+        .baran-leaf:nth-child(34) { left: 380px; height: 200px; animation-delay: 0.34s; }
+        .baran-leaf:nth-child(35) { left: 390px; height: 160px; animation-delay: 0.35s; }
+        .baran-leaf:nth-child(36) { left: 400px; height: 180px; animation-delay: 0.36s; }
+        .baran-leaf:nth-child(37) { left: 410px; height: 210px; animation-delay: 0.37s; }
+        .baran-leaf:nth-child(38) { left: 420px; height: 170px; animation-delay: 0.38s; }
+        .baran-leaf:nth-child(39) { left: 430px; height: 190px; animation-delay: 0.39s; }
+        .baran-leaf:nth-child(40) { left: 440px; height: 200px; animation-delay: 0.4s; }
+        .baran-leaf:nth-child(41) { left: 450px; height: 160px; animation-delay: 0.41s; }
+        .baran-leaf:nth-child(42) { left: 460px; height: 180px; animation-delay: 0.42s; }
+        .baran-leaf:nth-child(43) { left: 470px; height: 220px; animation-delay: 0.43s; }
+        .baran-leaf:nth-child(44) { left: 480px; height: 170px; animation-delay: 0.44s; }
+        .baran-leaf:nth-child(45) { left: 490px; height: 190px; animation-delay: 0.45s; }
+        .baran-leaf:nth-child(46) { left: 500px; height: 200px; animation-delay: 0.46s; }
+        .baran-leaf:nth-child(47) { left: 510px; height: 160px; animation-delay: 0.47s; }
+        .baran-leaf:nth-child(48) { left: 520px; height: 180px; animation-delay: 0.48s; }
+        .baran-leaf:nth-child(49) { left: 530px; height: 210px; animation-delay: 0.49s; }
+        .baran-leaf:nth-child(50) { left: 540px; height: 170px; animation-delay: 0.5s; }
+        @keyframes baranSway {
+            0%, 100% { transform: rotate(0deg) translateX(0); }
+            25% { transform: rotate(6deg) translateX(3px); }
+            50% { transform: rotate(0deg) translateX(0); }
+            75% { transform: rotate(-6deg) translateX(-3px); }
         }
         .update-info {
             text-align: center;
@@ -86,16 +119,61 @@
             <h1>あしもとに くさがおいしげった！</h1>
         </div>
 
-        <div class="spinner-container">
-            <div class="spinner">
-                <div class="spinner-inner">
-                    <div class="spinner-core"></div>
-                </div>
-            </div>
+        <div class="baran-container">
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
+            <div class="baran-leaf"></div>
         </div>
 
         <div class="update-info">
-            <p>更新時間: <span class="timestamp">2025-07-06 01:45:10</span></p>
+            <p>更新時間: <span class="timestamp">{{ data.current_time }}</span></p>
         </div>
     </div>
 </body>
