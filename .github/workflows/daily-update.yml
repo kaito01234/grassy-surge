@@ -103,4 +103,4 @@ jobs:
             --base main \
             --head $BRANCH_NAME
           
-          gh pr merge --auto --merge --delete-branch
+          gh pr merge --merge --delete-branch
