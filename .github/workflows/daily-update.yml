@@ -77,6 +77,19 @@ jobs:
           
           BRANCH_NAME="minor-fix-${{ github.run_number }}"
           
+          # Function to cleanup branch
+          cleanup_branch() {
+            if git ls-remote --exit-code --heads origin $BRANCH_NAME; then
+              git push origin --delete $BRANCH_NAME || true
+            fi
+          }
+          
+          # Check if branch exists and delete it
+          cleanup_branch
+          
+          # Set trap to cleanup on error
+          trap cleanup_branch ERR
+          
           git checkout -b $BRANCH_NAME
           
           git add .
@@ -90,4 +103,4 @@ jobs:
             --base main \
             --head $BRANCH_NAME
           
-          gh pr merge --auto --merge
+          gh pr merge --auto --merge --delete-branch
