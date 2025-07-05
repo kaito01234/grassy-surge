@@ -22,9 +22,9 @@ jobs:
             echo "Manual trigger detected"
             SHOULD="true"
           else
-            RANDAM_NUMBER=$RANDOM
-            echo "Random number: $RANDAM_NUMBER"
-            SHOULD=$([ $(($RANDAM_NUMBER % 360)) -eq 0 ] && echo "true" || echo "false")
+            RANDOM_1_TO_360=$(( (RANDOM % 360) + 1 ))
+            echo "Random number (1-360): $RANDOM_1_TO_360"
+            SHOULD=$([ $RANDOM_1_TO_360 -eq 1 ] && echo "true" || echo "false")
           fi
           echo "should=$SHOULD" >> $GITHUB_OUTPUT
           echo "Decision: $SHOULD"
@@ -77,17 +77,14 @@ jobs:
           
           BRANCH_NAME="minor-fix-${{ github.run_number }}"
           
-          # Function to cleanup branch
           cleanup_branch() {
             if git ls-remote --exit-code --heads origin $BRANCH_NAME; then
               git push origin --delete $BRANCH_NAME || true
             fi
           }
           
-          # Check if branch exists and delete it
           cleanup_branch
           
-          # Set trap to cleanup on error
           trap cleanup_branch ERR
           
           git checkout -b $BRANCH_NAME
