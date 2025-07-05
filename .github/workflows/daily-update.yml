@@ -1,43 +1,76 @@
-name: daily update
+name: daily update and build
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '45 * * * *'
+    - cron: '33 * * * *'
 
 env:
   USER_NAME: kaito01234
   USER_EMAIL: 43839796+kaito01234@users.noreply.github.com
 
 jobs:
-  checks-last-update:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      should: ${{ steps.random_decision.outputs.should }}
+    steps:
+      - name: Random decision
+        id: random_decision
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "Manual trigger detected"
+            SHOULD="true"
+          else
+            RANDAM_NUMBER=$RANDOM
+            echo "Random number: $RANDAM_NUMBER"
+            SHOULD=$([ $(($RANDAM_NUMBER % 360)) -eq 0 ] && echo "true" || echo "false")
+          fi
+          echo "should=$SHOULD" >> $GITHUB_OUTPUT
+          echo "Decision: $SHOULD"
+
+  update-and-build:
+    needs: check
+    if: needs.check.outputs.should == 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pages: write
+      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Random decision
-        id: random_decision
-        run: |
-          RANDAM_NUMBER=$RANDOM
-          echo $RANDAM_NUMBER
-          echo "result=$(($RANDAM_NUMBER % 20))" >> $GITHUB_OUTPUT
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
 
-      - name: Update file
-        if: steps.random_decision.outputs.result == 0
+      - name: Install dependencies
         run: |
-          CURRENT_DATETIME=$(date +'%Y-%m-%d %H:%M:%S')
-          echo $CURRENT_DATETIME > updatefile
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Update site content
+        run: |
+          python update_site.py
         env:
           TZ: 'Asia/Tokyo'
 
-      - name: Push file
-        if: steps.random_decision.outputs.result == 0
+      - name: Build static site
+        run: |
+          python build.py
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+
+      - name: Commit and push changes
         run: |
           git config --global user.name ${USER_NAME}
           git config --global user.email ${USER_EMAIL}
           git add .
-          git commit -m "Update file"
+          git commit -m "Update site content and build static files"
           git push
