@@ -1,0 +1,102 @@
+
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>あしもとに くさがおいしげった！</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #2c5530;
+            color: white;
+            border-radius: 5px;
+        }
+        .spinner-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px 0;
+        }
+        .spinner {
+            width: 450px;
+            height: 450px;
+            border: 24px solid #f0fff0;
+            border-top: 24px solid #22dd22;
+            border-radius: 50%;
+            animation: spin 0.5s linear infinite;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .spinner-inner {
+            width: 300px;
+            height: 300px;
+            border: 18px solid #fff8e0;
+            border-top: 18px solid #ff8800;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .spinner-core {
+            width: 150px;
+            height: 150px;
+            border: 12px solid #ffe8e8;
+            border-top: 12px solid #ff2222;
+            border-radius: 50%;
+            animation: spin 0.3s linear infinite;
+            position: absolute;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .update-info {
+            text-align: center;
+            padding: 15px;
+            background-color: #e8f5e8;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌱 あしもとに くさがおいしげった！</h1>
+        </div>
+
+        <div class="spinner-container">
+            <div class="spinner">
+                <div class="spinner-inner">
+                    <div class="spinner-core"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="update-info">
+            <p>更新時間: <span class="timestamp">2025-07-06 01:12:48</span></p>
+        </div>
+    </div>
+</body>
+</html>
