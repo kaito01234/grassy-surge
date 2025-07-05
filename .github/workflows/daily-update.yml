@@ -67,10 +67,26 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
 
-      - name: Commit and push changes
+      - name: Create PR for changes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name ${USER_NAME}
           git config --global user.email ${USER_EMAIL}
+          
+          BRANCH_NAME="minor-fix-${{ github.run_number }}"
+          
+          git checkout -b $BRANCH_NAME
+          
           git add .
-          git commit -m "Update site content and build static files"
-          git push
+          git commit -m "minor fix"
+          
+          git push origin $BRANCH_NAME
+          
+          gh pr create \
+            --title "minor fix" \
+            --body "" \
+            --base main \
+            --head $BRANCH_NAME
+          
+          gh pr merge --auto --merge
