@@ -5,10 +5,6 @@ on:
   schedule:
     - cron: '33 */4 * * *'
 
-env:
-  USER_NAME: kaito01234
-  USER_EMAIL: 43839796+kaito01234@users.noreply.github.com
-
 jobs:
   check:
     runs-on: ubuntu-latest
