@@ -3,7 +3,7 @@ name: daily update and build
 on:
   workflow_dispatch:
   schedule:
-    - cron: '33 * * * *'
+    - cron: '33 */4 * * *'
 
 env:
   USER_NAME: kaito01234
@@ -19,12 +19,12 @@ jobs:
         id: random_decision
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "Manual trigger detected"
+            echo "manual trigger"
             SHOULD="true"
           else
-            RANDOM_1_TO_360=$(( (RANDOM % 360) + 1 ))
-            echo "Random number (1-360): $RANDOM_1_TO_360"
-            SHOULD=$([ $RANDOM_1_TO_360 -eq 1 ] && echo "true" || echo "false")
+            RANDOM_NUM=$((RANDOM % 90))
+            echo "number: $RANDOM_NUM"
+            SHOULD=$([ $RANDOM_NUM -eq 0 ] && echo "true" || echo "false")
           fi
           echo "should=$SHOULD" >> $GITHUB_OUTPUT
           echo "Decision: $SHOULD"
@@ -72,8 +72,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git config --global user.name ${USER_NAME}
-          git config --global user.email ${USER_EMAIL}
+          git config --global user.name ${{ secrets.USER_NAME }}
+          git config --global user.email ${{ secrets.USER_EMAIL }}
           
           BRANCH_NAME="minor-fix-${{ github.run_number }}"
           
